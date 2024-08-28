@@ -1,0 +1,96 @@
+{
+  "routes": [
+    {
+      "endpoint": "/",
+      "methods": [
+        {
+          "method": "GET",
+          "description": "Fetches all contacts from the database and renders them using index.html template.",
+          "response": {
+            "content_type": "text/html",
+            "template": "index.html",
+            "status_code": 200
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/add",
+      "methods": [
+        {
+          "method": "GET",
+          "description": "Renders the add.html template for adding a new contact.",
+          "response": {
+            "content_type": "text/html",
+            "template": "add.html",
+            "status_code": 200
+          }
+        },
+        {
+          "method": "POST",
+          "description": "Adds a new contact to the database.",
+          "request": {
+            "body": {
+              "name": "string",
+              "phone": "string"
+            }
+          },
+          "response": {
+            "content_type": "application/json",
+            "body": {
+              "message": "Contacts added successfully!"
+            },
+            "status_code": 200
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/edit/<int:id>",
+      "methods": [
+        {
+          "method": "GET",
+          "description": "Fetches a contact by ID and renders it using edit.html template.",
+          "response": {
+            "content_type": "text/html",
+            "template": "edit.html",
+            "status_code": 200
+          }
+        },
+        {
+          "method": "POST",
+          "description": "Updates an existing contact by ID.",
+          "request": {
+            "body": {
+              "name": "string",
+              "phone": "string"
+            }
+          },
+          "response": {
+            "content_type": "application/json",
+            "body": {
+              "message": "Contacts updated successfully!"
+            },
+            "status_code": 200
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/delete/<int:id>",
+      "methods": [
+        {
+          "method": "DELETE",
+          "description": "Deletes a contact by ID.",
+          "response": {
+            "content_type": "application/json",
+            "body": {
+              "message": "Contacts deleted successfully!"
+            },
+            "status_code": 200
+          }
+        }
+      ]
+    }
+  ]
+}
